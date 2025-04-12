@@ -14,9 +14,7 @@ is_installed ffmpeg || {
 
 # Grab ext
 ext=$(echo "$1" | tr "." "\n" | tail -n 1)
-echo "$ext"
 output="output.$ext"
-echo "$output"
 
 # Run ffmpeg
 ffmpeg -i "$1" -filter:v mpdecimate -vsync vfr -c:v libx264 -preset slow -crf 23 -c:a copy "$output" 
